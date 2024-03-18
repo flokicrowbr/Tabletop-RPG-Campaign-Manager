@@ -2,7 +2,7 @@
 Sistema em PHP integrado com Mysql desenvolvido para trabalho Univesp
 
 Crie uma database no SQL chamado "user"
-e crie a tabela "card_activation"
+e crie a tabela "players_table"
 
 Importe o arquivo .sql
 

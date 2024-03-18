@@ -465,17 +465,17 @@ while($row = mysqli_fetch_array($run_data))
 
 		<div class='form-group col-md-2'>
 		<label for='inputLV'>Nivel</label>
-		<input type='number' id='classLevel' class='form-control' name='user_level' placeholder='Nivel.' maxlength='2' value='$level' required>
+		<input type='number' id='classLevel' levelById='$id' class='form-control' name='user_level' placeholder='Nivel.' maxlength='2' value='$level' personagemId='$id' required>
 		</div>
 		<div class='form-group col-md-2'>
 		<label for='inputEXP'>EXP</label>
-		<input type='number' class='form-control' name='user_exp' placeholder='EXP do Personagem.' id='b_exp' maxlength='6' onchange='UpdateLV()' value='$exp' required>
+		<input type='number' class='form-control' name='user_exp' placeholder='EXP do Personagem.' id='b_exp' expById='$id' maxlength='6' onchange='UpdateLV($id)' value='$exp' required>
 		</div>
 
 		<div class='form-row'>
 		<div class='form-group col-md-2'>
 		<label for='inputEmail4'>Ouro</label>
-		<input type='number' class='form-control' name='card_no' placeholder='Enter 12-digit Student Id.' maxlength='12' value='$u_gold' required>
+		<input type='number' class='form-control' name='card_no' placeholder='Ouro.' maxlength='12' value='$u_gold' required>
 		</div>
 		</div>
 
@@ -574,7 +574,7 @@ while($row = mysqli_fetch_array($run_data))
 		<div class='form-row'>
 		<div class='form-group col-md-6'>
 		<label for='helm'>Elmo</label>
-		<select name='user_helm' class='form-control' id='equippedHelm' value='$helm' onchange='UpdateINFO()'>
+		<select name='user_helm' class='form-control' id='equippedHelm' helmClassById='$id' value='$helm' onchange='UpdateINFO($id)'>
 		<option selected>$helm</option>
 		<optgroup id='optionsMenu' value='Opçoes' label='Opcoes'>
         <option value='Nenhum'>Nenhum</option>
@@ -598,7 +598,7 @@ while($row = mysqli_fetch_array($run_data))
 		</div>
 		<div class='form-group col-md-3'>
 		<label for='helm_def'>Defesa</label>
-		<input type='number' id='helmClass' class='form-control' name='user_helmdef' maxlength='12' placeholder='0. ' value='$helm_def'>
+		<input type='number' id='helmClass' class='form-control' helmdefById='$id' name='user_helmdef' maxlength='12' placeholder='0. ' value='$helm_def' personagemId='$id'>
 		</div>
 
 		<div class='form-group col-md-3'>
@@ -612,7 +612,7 @@ while($row = mysqli_fetch_array($run_data))
 		<div class='form-row'>
 		<div class='form-group col-md-6'>
 		<label for='armor'>Armadura</label>
-		<select name='user_armor' class='form-control' id='equippedArmor' value='$armor' onchange='UpdateINFO()'>
+		<select name='user_armor' class='form-control' id='equippedArmor' armorClassById='$id' value='$armor' onchange='UpdateINFO($id)'>
 		<option selected>$armor</option>
 		<optgroup id='optionsMenu' value='Opçoes' label='Opcoes'>
         <option value='Nenhum'>Nenhum</option>
@@ -631,12 +631,21 @@ while($row = mysqli_fetch_array($run_data))
 		<option value='Armadura pesada da ilha hindar'>Armadura pesada da ilha hindar</option>
 		<option value='Armadura de placa nilfgardiana'>Armadura de placa nilfgardiana</option>
         </optgroup>
+        <optgroup id='witcherArmor' value='Armadura de Bruxo' label='Armadura de Bruxo'>
+        <option value='Armadura de Urso'>Armadura de Urso</option>
+		<option value='Armadura de Gato'>Armadura de Gato</option>
+		<option value='Armadura de Grifo'>Armadura de Grifo</option>
+		<option value='Armadura de Manticora'>Armadura de Manticora</option>
+		<option value='Armadura de Vibora'>Armadura de Vibora</option>
+		<option value='Armadura de Lobo'>Armadura de Lobo</option>
+		<option value='Armadura de Corvo'>Armadura de Corvo</option>
+        </optgroup>
       </select>
 
 		</div>
 		<div class='form-group col-md-3'>
 		<label for='armor_def'>Defesa</label>
-		<input type='number' id='armorClass' class='form-control' name='user_armordef' maxlength='12' placeholder='0. ' value='$armor_def'>
+		<input type='number' id='armorClass' class='form-control' armordefById='$id' name='user_armordef' maxlength='12' placeholder='0. ' value='$armor_def' personagemId='$id'>
 		</div>
 
 		<div class='form-group col-md-3'>
@@ -653,7 +662,7 @@ while($row = mysqli_fetch_array($run_data))
 		<div class='form-row'>
 		<div class='form-group col-md-6'>
 		<label for='arms'>Braceiras</label>
-		<select name='user_arms' class='form-control' id='equippedArms' value='$arms' onchange='UpdateINFO()'>
+		<select name='user_arms' class='form-control' id='equippedArms' armsClassById='$id' value='$arms' onchange='UpdateINFO($id)'>
 		<option selected>$arms</option>
 		<optgroup id='optionsMenu' value='Opçoes' label='Opcoes'>
         <option value='Nenhum'>Nenhum</option>
@@ -672,12 +681,21 @@ while($row = mysqli_fetch_array($run_data))
 		<option value='Braceiras pesadas de hindar'>Braceiras pesadas de hindar</option>
 		<option value='Armadura de bracos nilfgardianas'>Armadura de bracos nilfgardianas</option>
         </optgroup>
+        <optgroup id='witcherArmor' value='Armadura de Bruxo' label='Armadura de Bruxo'>
+        <option value='Armadura de Urso'>Armadura de Urso</option>
+		<option value='Armadura de Gato'>Armadura de Gato</option>
+		<option value='Armadura de Grifo'>Armadura de Grifo</option>
+		<option value='Armadura de Manticora'>Armadura de Manticora</option>
+		<option value='Armadura de Vibora'>Armadura de Vibora</option>
+		<option value='Armadura de Lobo'>Armadura de Lobo</option>
+		<option value='Armadura de Corvo'>Armadura de Corvo</option>
+        </optgroup>
       </select>
 
 		</div>
 		<div class='form-group col-md-3'>
 		<label for='arms_def'>Defesa</label>
-		<input type='number' id='armsClass' class='form-control' name='user_armsdef' maxlength='12' placeholder='0. ' value='$arms_def'>
+		<input type='number' id='armsClass' class='form-control' armsdefById='$id' name='user_armsdef' maxlength='12' placeholder='0. ' value='$arms_def' personagemId='$id'>
 		</div>
 
 		<div class='form-group col-md-3'>
@@ -693,7 +711,7 @@ while($row = mysqli_fetch_array($run_data))
 		<div class='form-row'>
 		<div class='form-group col-md-6'>
 		<label for='legs'>Perneiras</label>
-		<select name='user_legs' class='form-control' id='equippedLegs' value='$legs' onchange='UpdateINFO2()'>
+		<select name='user_legs' class='form-control' id='equippedLegs' legsClassById='$id' value='$legs' onchange='UpdateINFO2($id)'>
 		<option selected>$legs</option>
 		<optgroup id='optionsMenu' value='Opçoes' label='Opcoes'>
         <option value='Nenhum'>Nenhum</option>
@@ -712,12 +730,21 @@ while($row = mysqli_fetch_array($run_data))
 		<option value='Chausses pesadas de hindas'>Chausses pesadas de hindas</option>
 		<option value='Grevas Nilfgardianas'>Grevas Nilfgardianas</option>
         </optgroup>
+        <optgroup id='witcherArmor' value='Armadura de Bruxo' label='Armadura de Bruxo'>
+        <option value='Armadura de Urso'>Armadura de Urso</option>
+		<option value='Armadura de Gato'>Armadura de Gato</option>
+		<option value='Armadura de Grifo'>Armadura de Grifo</option>
+		<option value='Armadura de Manticora'>Armadura de Manticora</option>
+		<option value='Armadura de Vibora'>Armadura de Vibora</option>
+		<option value='Armadura de Lobo'>Armadura de Lobo</option>
+		<option value='Armadura de Corvo'>Armadura de Corvo</option>
+        </optgroup>
       </select>
 
 		</div>
 		<div class='form-group col-md-3'>
 		<label for='legs_def'>Defesa</label>
-		<input type='number' id='legsClass' class='form-control' name='user_legsdef' maxlength='12' placeholder='0. ' value='$legs_def'>
+		<input type='number' id='legsClass' class='form-control' legsdefById='$id' name='user_legsdef' maxlength='12' placeholder='0. ' value='$legs_def' personagemId='$id'>
 		</div>
 
 		<div class='form-group col-md-3'>
@@ -733,7 +760,7 @@ while($row = mysqli_fetch_array($run_data))
 		<div class='form-row'>
 		<div class='form-group col-md-4'>
 		<label for='righthand'>Mao Direita</label>
-		<select name='user_righthand' class='form-control' id='equippedRHand' value='$righthand' onchange='UpdateINFO2()'>
+		<select name='user_righthand' class='form-control' id='equippedRHand' RHandById='$id' value='$righthand' onchange='UpdateINFO2($id)'>
 		<option selected>$righthand</option>
 		<optgroup id='optionsMenu' value='Opçoes' label='Opcoes'>
         <option value='Nenhum'>Nenhum</option>
@@ -803,12 +830,12 @@ while($row = mysqli_fetch_array($run_data))
 		</div>
 		<div class='form-group col-md-4'>
 		<label for='righthandnum'>Efeito</label>
-		<input type='text' id='rhandClass' class='form-control' name='user_righthandnum' maxlength='12' placeholder='0. ' value='$righthandnum'>
+		<input type='text' id='rhandClass' class='form-control' rhanddmgById='$id' name='user_righthandnum' maxlength='12' placeholder='0. ' value='$righthandnum' personagemId='$id'>
 		</div>
 
 		<div class='form-group col-md-2'>
 		<label for='righthanddur'>Dur. Total</label>
-		<input type='number' id='righthanddur' class='form-control' name='user_righthanddur' maxlength='12' placeholder='0. ' value='$righthanddur'>
+		<input type='number' id='righthanddur' class='form-control' rhanddurById='$id' name='user_righthanddur' maxlength='12' placeholder='0. ' value='$righthanddur' personagemId='$id'>
 		</div>
 
 		<div class='form-group col-md-2'>
@@ -894,7 +921,7 @@ while($row = mysqli_fetch_array($run_data))
 		
 		<div class='form-group'>
 		<label for='family'>Informacoes Importantes</label>
-			<textarea class='form-control' name='family' rows='3'>var infos</textarea>
+			<textarea class='form-control' name='family' rows='3'>$village</textarea>
 		</div>
 		
 		
