@@ -334,29 +334,29 @@ function HealHP() {
   }
 }
 
-function updateModifiers() {
+function updateModifiers(personagemId) {
   
 
-  var strScore = document.getElementById("strScore").value;
-  document.getElementById("strMod").value = Math.floor((strScore - 10) / 2);
+  var strScore = document.querySelector(`[strScore="${personagemId}"]`).value;
+  document.querySelector(`[strMod="${personagemId}"]`).value = Math.floor((strScore - 10) / 2);
 
-  var dexScore = document.getElementById("dexScore").value;
-  document.getElementById("dexMod").value = Math.floor((dexScore - 10) / 2);
+  var dexScore = document.querySelector(`[dexScore="${personagemId}"]`).value;
+  document.querySelector(`[dexMod="${personagemId}"]`).value = Math.floor((dexScore - 10) / 2);
 
-  var wisScore = document.getElementById("wisScore").value;
-  document.getElementById("wisMod").value = Math.floor((wisScore - 10) / 2);
+  var wisScore = document.querySelector(`[wisScore="${personagemId}"]`).value;
+  document.querySelector(`[wisMod="${personagemId}"]`).value = Math.floor((wisScore - 10) / 2);
 
-  var conScore = document.getElementById("conScore").value;
-  document.getElementById("conMod").value = Math.floor((conScore - 10) / 2);
+  var conScore = document.querySelector(`[conScore="${personagemId}"]`).value;
+  document.querySelector(`[conMod="${personagemId}"]`).value = Math.floor((conScore - 10) / 2);
 
-  var chaScore = document.getElementById("chaScore").value;
-  document.getElementById("chaMod").value = Math.floor((chaScore - 10) / 2);
+  var chaScore = document.querySelector(`[chaScore="${personagemId}"]`).value;
+  document.querySelector(`[chaMod="${personagemId}"]`).value = Math.floor((chaScore - 10) / 2);
 
-  var intScore = document.getElementById("intScore").value;
-  document.getElementById("intMod").value = Math.floor((intScore - 10) / 2);
+  var intScore = document.querySelector(`[intScore="${personagemId}"]`).value;
+  document.querySelector(`[intMod="${personagemId}"]`).value = Math.floor((intScore - 10) / 2);
 
-  var agiScore = document.getElementById("agiScore").value;
-  document.getElementById("agiMod").value = Math.floor((agiScore - 10) / 2);
+  var agiScore = document.querySelector(`[agiScore="${personagemId}"]`).value;
+  document.querySelector(`[agiMod="${personagemId}"]`).value = Math.floor((agiScore - 10) / 2);
 
   setSkills();
   enableArmor();

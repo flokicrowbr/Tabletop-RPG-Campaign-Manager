@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Mar-2024 às 14:08
+-- Tempo de geração: 18-Mar-2024 às 20:44
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -33,13 +33,20 @@ CREATE TABLE `players_table` (
   `u_level` int(10) NOT NULL,
   `u_exp` int(10) NOT NULL,
   `u_gold` int(8) NOT NULL,
-  `u_strScore` int(3) NOT NULL,
-  `u_dexScore` int(3) NOT NULL,
-  `u_wisScore` int(3) NOT NULL,
-  `u_conScore` int(3) NOT NULL,
-  `u_chaScore` int(3) NOT NULL,
-  `u_intScore` int(3) NOT NULL,
-  `u_agiScore` int(3) NOT NULL,
+  `u_strScore` int(3) NOT NULL DEFAULT 10,
+  `u_dexScore` int(3) NOT NULL DEFAULT 10,
+  `u_wisScore` int(3) NOT NULL DEFAULT 10,
+  `u_conScore` int(3) NOT NULL DEFAULT 10,
+  `u_chaScore` int(3) NOT NULL DEFAULT 10,
+  `u_intScore` int(3) NOT NULL DEFAULT 10,
+  `u_agiScore` int(3) NOT NULL DEFAULT 10,
+  `u_strCoef` int(3) NOT NULL,
+  `u_dexCoef` int(3) NOT NULL,
+  `u_wisCoef` int(3) NOT NULL,
+  `u_conCoef` int(3) NOT NULL,
+  `u_chaCoef` int(3) NOT NULL,
+  `u_intCoef` int(3) NOT NULL,
+  `u_agiCoef` int(3) NOT NULL,
   `u_l_name` text NOT NULL,
   `u_race` varchar(20) NOT NULL,
   `u_class` varchar(20) NOT NULL,
@@ -82,10 +89,10 @@ CREATE TABLE `players_table` (
 -- Extraindo dados da tabela `players_table`
 --
 
-INSERT INTO `players_table` (`id`, `u_name`, `u_level`, `u_exp`, `u_gold`, `u_strScore`, `u_dexScore`, `u_wisScore`, `u_conScore`, `u_chaScore`, `u_intScore`, `u_agiScore`, `u_l_name`, `u_race`, `u_class`, `u_a_hp`, `u_t_hp`, `u_a_est`, `u_t_est`, `u_birthday`, `u_gender`, `u_helm`, `u_helmdef`, `u_helmdur`, `u_armor`, `u_armordef`, `u_armordur`, `u_arms`, `u_armsdef`, `u_armsdur`, `u_legs`, `u_legsdef`, `u_legsdur`, `u_righthand`, `u_righthandnum`, `u_righthanddur`, `u_lefthand`, `u_lefthandnum`, `u_lefthanddur`, `u_extraequip`, `u_extraequipnum`, `u_extraequipdur`, `u_dist`, `u_village`, `file`, `staff_id`, `image`, `uploaded`) VALUES
-(104, 'Hofnir', 1, 0, 500, 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, '', 'Homem', 'Nenhum', 0, 0, 'Nenhum', 0, 0, 'Nenhum', 0, 0, 'Nenhum', 0, 0, 'Nenhum', '', 0, 'Nenhum', '', 0, '', '', 0, '', '', '', '', '', '2024-03-17 14:38:14'),
-(105, 'Juan', 7, 10000, 500, 16, 13, 12, 12, 12, 14, 14, '', 'Humano', 'Homem de Armas', 20, 20, 20, 20, '2024-03-08', 'Homem', 'Capuz blindado', 14, 3, 'Jaquetao de Tecido duplo', 8, 3, 'Braceiras de tecido duplo', 8, 3, 'Calcas lyrianas de couro', 16, 3, 'Espada Longa de Ferro', '2d6+2', 10, '', '', 0, '', '', 0, 'test', '', '', '', 'juan1.jpg', '2022-08-23 22:14:30'),
-(110, 'Lilith', 1, 355, 500, 10, 10, 10, 10, 10, 10, 10, '', 'Elfo', 'Mago', 50, 50, 67, 67, '', 'Mulher', 'Capuz de Arqueiro de Verden', 0, 0, 'Jaquetao', 0, 0, 'Braceiras da cavalaria', 0, 0, 'Calcas de cavalaria', 0, 0, 'Nenhum', '', 0, '', '', 0, '', '', 0, '', '', '', '', 'token_1 (3).png', '2024-03-17 14:39:17');
+INSERT INTO `players_table` (`id`, `u_name`, `u_level`, `u_exp`, `u_gold`, `u_strScore`, `u_dexScore`, `u_wisScore`, `u_conScore`, `u_chaScore`, `u_intScore`, `u_agiScore`, `u_strCoef`, `u_dexCoef`, `u_wisCoef`, `u_conCoef`, `u_chaCoef`, `u_intCoef`, `u_agiCoef`, `u_l_name`, `u_race`, `u_class`, `u_a_hp`, `u_t_hp`, `u_a_est`, `u_t_est`, `u_birthday`, `u_gender`, `u_helm`, `u_helmdef`, `u_helmdur`, `u_armor`, `u_armordef`, `u_armordur`, `u_arms`, `u_armsdef`, `u_armsdur`, `u_legs`, `u_legsdef`, `u_legsdur`, `u_righthand`, `u_righthandnum`, `u_righthanddur`, `u_lefthand`, `u_lefthandnum`, `u_lefthanddur`, `u_extraequip`, `u_extraequipnum`, `u_extraequipdur`, `u_dist`, `u_village`, `file`, `staff_id`, `image`, `uploaded`) VALUES
+(104, 'Hofnir', 2, 381, 537, 16, 10, 10, 10, 10, 10, 10, 3, 0, 0, 0, 0, 0, 0, '', 'Bruxo', 'Bruxo', 62, 62, 35, 60, '', 'Homem', 'Nenhum', 0, 0, 'Armadura de Gato', 14, 10, 'Armadura de Gato', 6, 6, 'Armadura de Gato', 6, 6, 'Espada de Prata de Bruxo', '1d6+2 (Prata 3d6)', 10, 'Nenhum', '', 0, '', '', 0, '', '', '', '', '', '2024-03-17 14:38:14'),
+(105, 'Juan', 7, 10000, 500, 16, 13, 12, 12, 12, 14, 14, 0, 0, 0, 0, 0, 0, 0, '', 'Humano', 'Homem de Armas', 20, 20, 20, 20, '2024-03-08', 'Homem', 'Capuz blindado', 14, 3, 'Jaquetao de Tecido duplo', 8, 3, 'Braceiras de tecido duplo', 8, 3, 'Calcas lyrianas de couro', 16, 3, 'Espada Longa de Ferro', '2d6+2', 10, '', '', 0, '', '', 0, 'test', '', '', '', 'juan1.jpg', '2022-08-23 22:14:30'),
+(110, 'Lilith', 2, 344, 323, 12, 9, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, '', 'Elfo', 'Mago', 50, 50, 47, 67, '', 'Mulher', 'Nenhum', 0, 0, 'Nenhum', 0, 0, 'Nenhum', 0, 0, 'Nenhum', 0, 0, 'Arco Curto', '3d6+3 (10m)', 2, '', '', 0, '', '', 0, '', '', '', '', 'token_1 (3).png', '2024-03-17 14:39:17');
 
 --
 -- Índices para tabelas despejadas

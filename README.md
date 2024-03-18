@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/flokicrowbr/Tabletop-RPG-Campaign-Manager/main/img/rpgdemesa.png" alt="rpgdemesa">
+
 # Sistema de Gerenciamento de Ficha de Personagem de RPG de Mesa
 Sistema em PHP integrado com Mysql desenvolvido para trabalho Univesp
 

@@ -93,7 +93,7 @@ include('db.php');
 
 				<tr>
 				<td class='text-center'>$sl</td>
-				<td class='text-center'>$u_name   $u_l_name</td>
+				<td class='text-center'><b>$u_name</b></td>
 				<td class='text-center'>$u_gold</td>
 				<td class='text-center'>$u_level</td>
 				<td class='text-right'><b>HP: </b> &nbsp; $u_a_hp &nbsp;  / &nbsp;  $u_t_hp <br> <b>EST:</b> &nbsp; $u_a_est &nbsp;  / &nbsp;  $u_t_est</td>
@@ -278,6 +278,13 @@ while($row = mysqli_fetch_array($run_data))
 	$chaScore = $row['u_chaScore'];
 	$intScore = $row['u_intScore'];
 	$agiScore = $row['u_agiScore'];
+	$strCoef = $row['u_strCoef'];
+	$dexCoef = $row['u_dexCoef'];
+	$wisCoef = $row['u_wisCoef'];
+	$conCoef = $row['u_conCoef'];
+	$chaCoef = $row['u_chaCoef'];
+	$intCoef = $row['u_intCoef'];
+	$agiCoef = $row['u_agiCoef'];
 	$u_name = $row['u_name'];
 	$name2 = $row['u_l_name'];
 	$u_a_hp = $row['u_a_hp'];
@@ -409,6 +416,13 @@ while($row = mysqli_fetch_array($run_data))
 	$chaScore = $row['u_chaScore'];
 	$intScore = $row['u_intScore'];
 	$agiScore = $row['u_agiScore'];
+	$strCoef = $row['u_strCoef'];
+	$dexCoef = $row['u_dexCoef'];
+	$wisCoef = $row['u_wisCoef'];
+	$conCoef = $row['u_conCoef'];
+	$chaCoef = $row['u_chaCoef'];
+	$intCoef = $row['u_intCoef'];
+	$agiCoef = $row['u_agiCoef'];
 	$u_name = $row['u_name'];
 	$name2 = $row['u_l_name'];
 	$race = $row['u_race'];
@@ -869,44 +883,45 @@ while($row = mysqli_fetch_array($run_data))
 
         <tr>
           <td class='text-center'>Forca</td>
-          <td><input type='number' name='user_strScore' value='$strScore' id='strScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='strMod' class='form-control' min='-5' max='10'></td>
+		  
+          <td><input type='number' name='user_strScore' value='$strScore' id='strScore' strScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_strCoef' value='$strCoef' id='strMod' strMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='strPoints' class='form-control' min='0' max='30'></td>
         </tr>
         <tr>
           <td class='text-center'>Destreza</td>
-          <td><input type='number' name='user_dexScore' value='$dexScore' id='dexScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='dexMod' class='form-control' min='-5' max='10'></td>
+          <td><input type='number' name='user_dexScore' value='$dexScore' id='dexScore' dexScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_dexCoef' value='$dexCoef' id='dexMod' dexMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='dexPoints' class='form-control' min='0' max='30'></td>
         </tr>
         <tr>
           <td class='text-center'>Sabedoria</td>
-          <td><input type='number' name='user_wisScore' value='$wisScore' id='wisScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='wisMod' class='form-control' min='-5' max='10'></td>
+          <td><input type='number' name='user_wisScore' value='$wisScore' id='wisScore' wisScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_wisCoef' value='$wisCoef' id='wisMod' wisMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='wisPoints' class='form-control' min='0' max='30'></td>
         </tr>
         <tr>
           <td class='text-center'>Constituicao</td>
-          <td><input type='number' name='user_conScore' value='$conScore' id='conScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='conMod' class='form-control' min='-5' max='10'></td>
+          <td><input type='number' name='user_conScore' value='$conScore' id='conScore' conScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_conCoef' value='$conCoef' id='conMod' conMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='conPoints' class='form-control' min='0' max='30'></td>
         </tr>
         <tr>
           <td class='text-center'>Carisma</td>
-          <td><input type='number' name='user_chaScore' value='$chaScore' id='chaScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='chaMod' class='form-control' min='-5' max='10'></td>
+          <td><input type='number' name='user_chaScore' value='$chaScore' id='chaScore' chaScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_chaCoef' value='$chaCoef' id='chaMod' chaMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='chaPoints' class='form-control' min='0' max='30'></td>
         </tr>
         <tr>
           <td class='text-center'>Inteligencia</td>
-          <td><input type='number' name='user_intScore' value='$intScore' id='intScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='intMod' class='form-control' min='-5' max='10'></td>
+          <td><input type='number' name='user_intScore' value='$intScore' id='intScore' intScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_intCoef' value='$intCoef' id='intMod' intMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='intPoints' class='form-control' min='0' max='30'></td>
         </tr>
         <tr>
           <td class='text-center'>Agilidade</td>
-          <td><input type='number' name='user_agiScore' value='$agiScore' id='agiScore' class='form-control' min='1' max='30' onchange='updateModifiers()'></td>
-          <td><input type='number' value='0' id='agiMod' class='form-control' min='-5' max='10'></td>
+          <td><input type='number' name='user_agiScore' value='$agiScore' id='agiScore' agiScore='$id' class='form-control' min='1' max='30' onchange='updateModifiers($id)'></td>
+          <td><input type='number' name='user_agiCoef' value='$agiCoef' id='agiMod' agiMod='$id' class='form-control' personagemId='$id' min='-5' max='10'></td>
 		  <td><input type='number' value='0' id='agiPoints' class='form-control' min='0' max='30'></td>
         </tr>
       </table>
