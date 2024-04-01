@@ -16,6 +16,7 @@ include('db.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/script.js"></script>
 </head>
 <body style="background-color: #dfdfe8">
 <div class="container">
@@ -110,10 +111,10 @@ include('db.php');
 					<span>
 					<a href='#' class='btn btn-success mr-3 profile' data-toggle='modal' data-target='#view$id' title='Ficha'><i class='fa fa-address-card' aria-hidden='true'></i></a>
 					<a href='#' class='btn btn-warning mr-3 edituser' data-toggle='modal' data-target='#edit$id' title='Editar'><i class='fa fa-pencil-square-o fa-lg'></i></a>
-					<a href='#' class='btn btn-primary mr-3 itembag' data-toggle='modal' data-target='#edit$id' title='Inventario'><i class='fa fa-suitcase fa-lg'></i></a>
+					<a href='#' class='btn btn-primary mr-3 itembag' data-toggle='modal' data-target='#inventory$id' title='Inventario'><i class='fa fa-suitcase fa-lg'></i></a>
 					<br><br>
-					<a href='#' class='btn btn-info mr-3 skills' data-toggle='modal' data-target='#edit$id' title='Habilidades'><i class='fa fa-book-quran fa-lg'></i></a>
-					<a href='#' class='btn btn-alchemy mr-3 alchemy' data-toggle='modal' data-target='#edit$id' title='Alquimia'><i class='fa fa-flask fa-lg'></i></a>
+					<a href='#' class='btn btn-info mr-3 skills' data-toggle='modal' data-target='#skill$id' title='Habilidades'><i class='fa fa-book-quran fa-lg'></i></a>
+					<a href='#' class='btn btn-alchemy mr-3 alchemy' data-toggle='modal' data-target='#alchemy$id' title='Alquimia'><i class='fa fa-flask fa-lg'></i></a>
 					<a href='#' class='btn btn-danger deleteuser' title='Deletar'>
 					<i class='fa fa-trash fa-lg' data-toggle='modal' data-target='#$id' style='' aria-hidden='true'></i>
 			   </a>
@@ -193,10 +194,6 @@ include('db.php');
 </div>
 </div>
 
-
-			
-
-
         	<div class="form-group">
         		<label>Imagem</label>
         		<input type="file" name="image" class="form-control" >
@@ -231,6 +228,7 @@ $run_data = mysqli_query($con,$get_data);
 while($row = mysqli_fetch_array($run_data))
 {
 	$id = $row['id'];
+	$u_name = $row['u_name'];
 	echo "
 
 <div id='$id' class='modal fade' role='dialog'>
@@ -240,10 +238,10 @@ while($row = mysqli_fetch_array($run_data))
     <div class='modal-content'>
       <div class='modal-header'>
         <button type='button' class='close' data-dismiss='modal'>&times;</button>
-        <h4 class='modal-title text-center'>Você tem certeza??</h4>
+        <h4 class='modal-title text-center'>Voce tem certeza que deseja deletar <b>'$u_name'</b> ??</h4>
       </div>
       <div class='modal-body'>
-        <a href='delete.php?id=$id' class='btn btn-danger' style='margin-left:250px'>Delete</a>
+        <a href='delete.php?id=$id' class='btn btn-danger' style='margin-left:250px'>Deletar</a>
       </div>
       
     </div>
@@ -392,7 +390,267 @@ while($row = mysqli_fetch_array($run_data))
 
 ?>
 
+<!----players inicio--->
+<?php
+$get_players = "SELECT * FROM players_table";
+$run_players = mysqli_query($con, $get_players);
 
+while ($row_players = mysqli_fetch_array($run_players)) {
+
+    $id = $row_players['id'];
+    $u_name = $row_players['u_name'];
+
+    echo "
+        <div id='skill$id' class='modal fade' role='dialog'>
+            <div class='modal-xlg'>
+                <!-- Modal content-->
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                        <h4 class='modal-title text-center'>Habilidades de <b>$u_name</b></h4> 
+                    </div>
+                    <div class='modal-body'>
+
+                        <form action='edit_player_skill.php?id=$id' method='post' enctype='multipart/form-data'>
+                            <div class='form-row'>
+
+
+							<div class='form-group col-md-4'>
+							<label for='char_id'> </label>
+							<input type='hidden' class='form-control' name='char_id' placeholder='ID' value='$id'>
+							</div>
+
+                                <div class='form-group col-md-12'>
+                                    <label for='Skill'>Espaco de Habilidade</label>
+                                    <select name='user_skill' class='form-control' id='user_skill'>
+										<option selected>Nada</option>
+                                        <option value='Nenhum'>Nenhum</option>
+                                        <optgroup id='optionsMenu' value='Opcoes' label='Opcoes'>
+ 
+                                        </optgroup>
+
+                                        <optgroup id='mixedSkill' value='Misturado' label='Misturado'>
+										";
+
+										// Query para obter as habilidades misturadas
+										$get_skills_mixed = "SELECT skill_name FROM skill_db where skill_element = 'Misturado'";
+										$run_skills_mixed = mysqli_query($con, $get_skills_mixed);
+
+										while ($row_skills_mixed = mysqli_fetch_array($run_skills_mixed)) {
+											$skill_mixed = $row_skills_mixed['skill_name'];
+
+											echo "<option value='$skill_mixed'>$skill_mixed</option>";
+										}
+
+										echo "
+										
+										</optgroup>
+										<optgroup id='fireSkill' value='Fogo' label='Fogo'>
+
+										";
+
+										// Query para obter as habilidades de Fogo
+										$get_skills_fire = "SELECT skill_name FROM skill_db where skill_element = 'Fogo'";
+										$run_skills_fire = mysqli_query($con, $get_skills_fire);
+
+										while ($row_skills_fire = mysqli_fetch_array($run_skills_fire)) {
+											$skill_fire = $row_skills_fire['skill_name'];
+
+											echo "<option value='$skill_fire'>$skill_fire</option>";
+										}
+
+										echo "
+
+										</optgroup>
+										<optgroup id='windSkill' value='Ar' label='Ar'>
+										
+										";
+
+										// Query para obter as habilidades de Ar
+										$get_skills_wind = "SELECT skill_name FROM skill_db where skill_element = 'Ar'";
+										$run_skills_wind = mysqli_query($con, $get_skills_wind);
+
+										while ($row_skills_wind = mysqli_fetch_array($run_skills_wind)) {
+											$skill_wind = $row_skills_wind['skill_name'];
+
+											echo "<option value='$skill_wind'>$skill_wind</option>";
+										}
+
+										echo "
+										
+										</optgroup>
+                                        <optgroup id='waterSkill' value='Agua' label='Agua'>
+										
+										";
+
+										// Query para obter as habilidades de Agua
+										$get_skills_water = "SELECT skill_name FROM skill_db where skill_element = 'Agua'";
+										$run_skills_water = mysqli_query($con, $get_skills_water);
+
+										while ($row_skills_water = mysqli_fetch_array($run_skills_water)) {
+											$skill_water = $row_skills_water['skill_name'];
+
+											echo "<option value='$skill_water'>$skill_water</option>";
+										}
+
+										echo "
+										
+										</optgroup>
+                                        <optgroup id='earthSkill' value='Terra' label='Terra'>
+										
+										";
+
+										// Query para obter as habilidades de Terra
+										$get_skills_earth = "SELECT skill_name FROM skill_db where skill_element = 'Terra'";
+										$run_skills_earth = mysqli_query($con, $get_skills_earth);
+
+										while ($row_skills_earth = mysqli_fetch_array($run_skills_earth)) {
+											$skill_earth = $row_skills_earth['skill_name'];
+
+											echo "<option value='$skill_earth'>$skill_earth</option>";
+										}
+
+										echo "
+										
+										</optgroup>
+                                        <optgroup id='earthSkill' value='Terra' label='Terra'>
+										
+										";
+
+										// Query para obter as habilidades de Bruxo
+										$get_skills_witcher = "SELECT skill_name FROM skill_db where skill_element = 'Bruxo'";
+										$run_skills_witcher = mysqli_query($con, $get_skills_witcher);
+
+										while ($row_skills_witcher = mysqli_fetch_array($run_skills_witcher)) {
+											$skill_witcher = $row_skills_witcher['skill_name'];
+
+											echo "<option value='$skill_witcher'>$skill_witcher</option>";
+										}
+
+										echo "
+										
+										</optgroup>
+										
+                                    </select>
+									
+                                </div>
+								
+								
+								<hr>
+								<table class='table table-bordered table-striped table-hover' id='skillTable'>
+								<thead>
+								<th class='text-center' scope='col'>ID</th>
+								<th class='text-center' scope='col'>Habilidade</th>
+								<th class='text-center' scope='col'>Dano</th>
+								<th class='text-center' scope='col'>EST</th>
+								<th class='text-center' scope='col'>Nivel</th>
+								<th class='text-center' scope='col'>Elemento</th>
+								<th class='text-center' scope='col'>Acao</th>
+								<th class='text-center' scope='col'>Descricao da Habilidade</th>
+								<th class='text-center' scope='col'>Opcoes</th>
+
+								</thead>
+								
+								
+
+								";
+								// Query para obter as habilidades do Personagem
+								$get_allskill = '
+								select
+								ps.entry_id,
+								ps.player_id,
+								ps.skill_id,
+								sd.id,
+								sd.skill_name,
+								sd.skill_dmg,
+								sd.skill_est_cost, 
+								sd.skill_lv,
+								sd.skill_def,
+								sd.skill_duration,
+								sd.skill_range, 
+								sd.skill_act_type, 
+								sd.skill_element, 
+								sd.skill_class, 
+								sd.skill_description, 
+								sd.skill_effect 
+								from skill_db sd
+								inner join player_skill ps on sd.id = ps.skill_id
+								order by ps.player_id ASC
+								;
+								';
+								$run_allskill = mysqli_query($con, $get_allskill);
+								$i = 0;
+								$y = 0;
+								
+								while ($row_allskill = mysqli_fetch_array($run_allskill)) {
+									$ps_entry_id  = $row_allskill['entry_id'];
+									$ps_player_id = $row_allskill['player_id'];
+									
+									$ps_skill_id = $row_allskill['skill_id'];
+									$sd_id = $row_allskill['id'];
+									$sd_skill_name = $row_allskill['skill_name'];
+									$sd_skill_dmg = $row_allskill['skill_dmg'];
+									$sd_skill_est_cost = $row_allskill['skill_est_cost'];
+									$sd_skill_lv = $row_allskill['skill_lv'];
+									$sd_skill_def = $row_allskill['skill_def'];
+									$sd_skill_duration = $row_allskill['skill_duration'];
+									$sd_skill_range = $row_allskill['skill_range'];
+									$sd_skill_act_type = $row_allskill['skill_act_type'];
+									$sd_skill_element = $row_allskill['skill_element'];
+									$sd_skill_class = $row_allskill['skill_class'];
+									$sd_skill_description = $row_allskill['skill_description'];
+									$sd_skill_effect = $row_allskill['skill_effect'];
+
+									/*if ($ps_player_id !== $id){
+										break;
+								}*/
+
+
+										
+								if($ps_player_id == $id){
+									echo "		
+									<tr>								
+								<td class='text-center'>$ps_entry_id</td>
+								<td class='text-center'>$sd_skill_name</td>
+								<td class='text-center'>$sd_skill_dmg</td>
+								<td class='text-center'>$sd_skill_est_cost</td>
+								<td class='text-center'>$sd_skill_lv</td>
+								<td class='text-center'>$sd_skill_element</td>
+								<td class='text-center'>$sd_skill_act_type</td>
+								<td class='text-center'>
+								<b>Defesa:</b> $sd_skill_def &nbsp;	&nbsp; <b>Duracao:</b> $sd_skill_duration &nbsp; &nbsp; <b>Alcance:</b> $sd_skill_range<br>
+								$sd_skill_description <br>
+								<b>$sd_skill_effect</b>
+								
+								</td>
+								<td class='text-center'>Opcoes</td>
+								";
+								}
+								}
+							echo "
+								</tr>
+							
+								</table>
+								</hr>
+								
+								
+									
+                            </div>
+							<input type='submit' name='submit' class='btn btn-info btn-large' value='Salvar'>
+							<button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                        </form>
+                    </div>
+                    <div class='modal-footer'>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    ";
+}
+?>
+<!----players fim--->
 
 
 
@@ -557,8 +815,8 @@ while($row = mysqli_fetch_array($run_data))
 		
 		<div class='form-group col-md-3'>
 		<label for='buttonHP'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-		<span class='btn btn-danger' onclick='takeDamage();'>Dano HP</span>
-		<span class='btn btn-success' onclick='healHP();'>Recuperar</span>
+		<span class='btn btn-danger' onclick='takeDamage();'>+HP</span>
+		<span class='btn btn-success' onclick='healHP();'>-HP</span>
 		</div>
 
 
@@ -579,8 +837,8 @@ while($row = mysqli_fetch_array($run_data))
 		
 		<div class='form-group col-md-3'>
 		<label for='buttonHP'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-		<span class='btn btn-primary' onclick='takeDamage();'>Usar EST</span>
-		<span class='btn btn-success' onclick='healHP();'>Recuperar</span>
+		<span class='btn btn-primary' onclick='takeDamage();'>+ST</span>
+		<span class='btn btn-success' onclick='healHP();'>-ST</span>
 		</div>
 
 		
@@ -939,8 +1197,6 @@ while($row = mysqli_fetch_array($run_data))
 			<textarea class='form-control' name='family' rows='3'>$village</textarea>
 		</div>
 		
-		
-		
 		<div class='form-group'>
 		<label for='inputAddress'>Cidade</label>
 		<input type='text' class='form-control' name='village' placeholder='Onde o personagem nasceu' value='$village'>
@@ -974,8 +1230,6 @@ while($row = mysqli_fetch_array($run_data))
 
 	";
 }
-
-
 ?>
 
 
@@ -983,6 +1237,14 @@ while($row = mysqli_fetch_array($run_data))
   <script>
     $(document).ready(function () {
       $('#myTable').DataTable();
+
+    });
+  </script>
+
+<script src="js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#skillTable').DataTable();
 
     });
   </script>
