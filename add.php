@@ -6,9 +6,10 @@ include('db.php');
 if(isset($_POST['submit'])){
 	$u_gold = $_POST['u_gold'];
 	$u_name = $_POST['u_name'];
-	$u_birthday = $_POST['user_dob'];
 	$u_gender = $_POST['user_gender'];
 	$u_level = $_POST['user_level'];
+	$race = $_POST['user_race'];
+	$class = $_POST['user_class'];
 	
 	//upload de imagem
 	$msg = "";
@@ -21,7 +22,7 @@ if(isset($_POST['submit'])){
   		$msg = "Falha ao enviar imagem";
   	}
 
-  	$insert_data = "INSERT INTO players_table(u_gold, u_name, u_birthday, u_gender, u_level, image,uploaded) VALUES ('$u_gold','$u_name','$u_birthday','$u_gender','$u_level','$image',NOW())";
+  	$insert_data = "INSERT INTO players_table(u_gold, u_name, u_gender, u_level, u_race, u_class, image,uploaded) VALUES ('$u_gold','$u_name','$u_birthday','$u_gender','$u_level','$race','$class','$image',NOW())";
   	$run_data = mysqli_query($con,$insert_data);
 
   	if($run_data){

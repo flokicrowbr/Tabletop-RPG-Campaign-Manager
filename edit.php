@@ -27,7 +27,7 @@ else{
 //Atualização
 if(isset($_POST['submit']))
 {
-	$u_gold = $_POST['card_no'];
+	$u_gold = $_POST['u_gold'];
 	$u_strScore = $_POST['user_strScore'];
 	$u_dexScore = $_POST['user_dexScore'];
 	$u_wisScore = $_POST['user_wisScore'];
@@ -63,19 +63,21 @@ if(isset($_POST['submit']))
 	$u_righthand = $_POST['user_righthand'];
 	$u_righthandnum = $_POST['user_righthandnum'];
 	$u_righthanddur = $_POST['user_righthanddur'];
-	//$u_lefthand = $_POST['user_lefthand'];
-	//$u_lefthandnum = $_POST['user_lefthandnum'];
-	//$u_lefthanddur = $_POST['user_lefthanddur'];
+	$u_lefthand = $_POST['user_lefthand'];
+	$u_lefthandnum = $_POST['user_lefthandnum'];
+	$u_lefthanddur = $_POST['user_lefthanddur'];
 	//$u_extraequip = $_POST['user_extraequip'];
 	//$u_extraequipnum = $_POST['user_extraequipnum'];
 	//$u_extraequipdur = $_POST['user_extraequipdur'];
 	$u_level = $_POST['user_level'];
 	$u_exp = $_POST['user_exp'];
-	//$u_dist = $_POST['dist'];
-	$u_village = $_POST['village'];
+	$u_city = $_POST['u_city'];
+	$u_info = $_POST['u_info'];
 	$u_t_hp = $_POST['u_t_hp'];
 	$u_a_est = $_POST['u_a_est'];
 	$u_t_est = $_POST['u_t_est'];
+	$u_t_vigor = $_POST['u_t_vigor'];
+
 	
 	$msg = "";
 	$image = $_FILES['image']['name'];
@@ -85,7 +87,8 @@ if(isset($_POST['submit']))
 	$target = "upload_images/".basename($image);
 
 	//u_lefthand = '$u_lefthand', u_lefthandnum = '$u_lefthandnum', u_lefthanddur = '$u_lefthanddur', u_extraequip = '$u_extraequip', u_extraequipnum = '$u_extraequipnum', u_extraequipdur = '$u_extraequipdur',
-	$update = "UPDATE players_table SET u_gold='$u_gold', u_strScore='$u_strScore', u_dexScore='$u_dexScore', u_wisScore='$u_wisScore', u_conScore='$u_conScore', u_chaScore='$u_chaScore', u_intScore='$u_intScore', u_agiScore='$u_agiScore', u_strCoef='$u_strCoef', u_dexCoef='$u_dexCoef', u_wisCoef='$u_wisCoef', u_conCoef='$u_conCoef', u_chaCoef='$u_chaCoef', u_intCoef='$u_intCoef', u_agiCoef='$u_agiCoef', u_name = '$u_name', u_race = '$u_race', u_class = '$u_class', u_a_hp = '$u_a_hp', u_t_hp = '$u_t_hp', u_helm = '$u_helm', u_helmdef = '$u_helmdef', u_helmdur = '$u_helmdur', u_armor = '$u_armor', u_armordef = '$u_armordef', u_armordur = '$u_armordur', u_arms = '$u_arms', u_armsdef = '$u_armsdef', u_armsdur = '$u_armsdur', u_legs = '$u_legs', u_legsdef = '$u_legsdef', u_legsdur = '$u_legsdur', u_righthand = '$u_righthand', u_righthandnum = '$u_righthandnum', u_righthanddur = '$u_righthanddur', u_birthday = '$u_birthday', u_gender = '$u_gender', u_level = '$u_level', u_exp = '$u_exp', u_village = '$u_village', u_a_est = '$u_a_est', u_t_est = '$u_t_est', image = '$image' WHERE id=$id ";
+	$update = "UPDATE players_table SET u_gold='$u_gold', u_strScore='$u_strScore', u_dexScore='$u_dexScore', u_wisScore='$u_wisScore', u_conScore='$u_conScore', u_chaScore='$u_chaScore', u_intScore='$u_intScore', u_agiScore='$u_agiScore', u_strCoef='$u_strCoef', u_dexCoef='$u_dexCoef', u_wisCoef='$u_wisCoef', u_conCoef='$u_conCoef', u_chaCoef='$u_chaCoef', u_intCoef='$u_intCoef', u_agiCoef='$u_agiCoef', u_name = '$u_name', u_race = '$u_race', u_class = '$u_class', u_a_hp = '$u_a_hp', u_t_hp = '$u_t_hp', u_helm = '$u_helm', u_helmdef = '$u_helmdef', u_helmdur = '$u_helmdur', u_armor = '$u_armor', u_armordef = '$u_armordef', u_armordur = '$u_armordur', u_arms = '$u_arms', u_armsdef = '$u_armsdef', u_armsdur = '$u_armsdur', u_legs = '$u_legs', u_legsdef = '$u_legsdef', u_legsdur = '$u_legsdur', u_righthand = '$u_righthand', u_righthandnum = '$u_righthandnum', u_righthanddur = '$u_righthanddur', u_lefthand = '$u_lefthand', u_lefthandnum = '$u_lefthandnum', u_lefthanddur = '$u_lefthanddur', u_birthday = '$u_birthday', u_gender = '$u_gender', u_level = '$u_level', u_exp = '$u_exp', u_info = '$u_info', u_city = '$u_city', u_a_est = '$u_a_est', u_t_est = '$u_t_est', u_t_vigor = '$u_t_vigor', image = '$image' WHERE id=$id ";
+	
 	$run_update = mysqli_query($con,$update);
 
 	if($run_update){

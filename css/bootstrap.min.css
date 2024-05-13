@@ -2055,6 +2055,7 @@ pre code {
 .col-lg-8,
 .col-lg-9,
 .col-md-1,
+.col-md-1-5,
 .col-md-10,
 .col-md-11,
 .col-md-12,
@@ -2079,6 +2080,7 @@ pre code {
 .col-sm-8,
 .col-sm-9,
 .col-xs-1,
+.col-xs-1-5,
 .col-xs-10,
 .col-xs-11,
 .col-xs-12,
@@ -2097,6 +2099,7 @@ pre code {
 }
 
 .col-xs-1,
+.col-xs-1-5,
 .col-xs-10,
 .col-xs-11,
 .col-xs-12,
@@ -2153,6 +2156,10 @@ pre code {
 
 .col-xs-2 {
     width: 16.66666667%
+}
+
+.col-xs-1-5 {
+    width: 12.66666667%
 }
 
 .col-xs-1 {
@@ -2540,6 +2547,7 @@ pre code {
 @media (min-width:992px) {
 
     .col-md-1,
+    .col-md-1-5,
     .col-md-10,
     .col-md-11,
     .col-md-12,
@@ -2596,6 +2604,10 @@ pre code {
 
     .col-md-2 {
         width: 16.66666667%
+    }
+
+    .col-md-1-5 {
+        width: 10.66666667%
     }
 
     .col-md-1 {
@@ -4052,14 +4064,14 @@ fieldset[disabled] .btn-primary:hover {
 .btn-alchemy.focus,
 .btn-alchemy:focus {
     color: #fff;
-    background-color: #4c0d5c;
-    border-color: #200427
+    background-color: #24062b;
+    border-color: #15021a
 }
 
 .btn-alchemy:hover {
     color: #fff;
-    background-color: #4c0d5c;
-    border-color: #200427
+    background-color: #24062b;
+    border-color: #15021a
 }
 
 .btn-alchemy.active,
@@ -8342,3 +8354,154 @@ button.close {
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
+
+.stats{
+    display: none;
+}
+
+.equips{
+    display: none;
+}
+
+/*#Botões Customozidados*/
+.btn2 {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+/*#Botão Stats*/
+.btn-stats,.btn-equips {
+    color: #fff;
+    background-color: #4c0d5c;
+    border-color: #200427
+}
+
+.btn-stats.focus,
+.btn-stats:focus,
+.btn-equips.focus,
+.btn-equips:focus
+{
+    color: #fff;
+    background-color: #4c0d5c;
+    border-color: #200427
+}
+
+.btn-stats:hover,
+.btn-equips:hover
+{
+    color: #fff;
+    background-color: #24062b;
+    border-color: #15021a
+}
+
+.btn-stats.active,
+.btn-stats:active,
+.open>.dropdown-toggle.btn-stats,
+.btn-equips.active,
+.btn-equips:active,
+.open>.dropdown-toggle.btn-equips
+ {
+    color: #fff;
+    background-color: #4c0d5c;
+    background-image: none;
+    border-color: #200427
+}
+
+.btn-stats.active.focus,
+.btn-stats.active:focus,
+.btn-stats.active:hover,
+.btn-stats:active.focus,
+.btn-stats:active:focus,
+.btn-stats:active:hover,
+.open>.dropdown-toggle.btn-stats.focus,
+.open>.dropdown-toggle.btn-stats:focus,
+.open>.dropdown-toggle.btn-stats:hover, 
+.btn-equips.active.focus,
+.btn-equips.active:focus,
+.btn-equips.active:hover,
+.btn-equips:active.focus,
+.btn-equips:active:focus,
+.btn-equips:active:hover,
+.open>.dropdown-toggle.btn-equips.focus,
+.open>.dropdown-toggle.btn-equips:focus,
+.open>.dropdown-toggle.btn-equips:hover 
+{
+    color: #fff;
+    background-color: #4c0d5c;
+    border-color: #200427
+}
+
+.btn-stats.disabled.focus,
+.btn-stats.disabled:focus,
+.btn-stats.disabled:hover,
+.btn-stats[disabled].focus,
+.btn-stats[disabled]:focus,
+.btn-stats[disabled]:hover,
+fieldset[disabled] .btn-stats.focus,
+fieldset[disabled] .btn-stats:focus,
+fieldset[disabled] .btn-stats:hover,
+
+.btn-equips.disabled.focus,
+.btn-equips.disabled:focus,
+.btn-equips.disabled:hover,
+.btn-equips[disabled].focus,
+.btn-equips[disabled]:focus,
+.btn-equips[disabled]:hover,
+fieldset[disabled] .btn-equips.focus,
+fieldset[disabled] .btn-equips:focus,
+fieldset[disabled] .btn-equips:hover
+{
+    background-color: #4c0d5c;
+    border-color: #200427
+}
+
+.btn-stats .badge, 
+.btn-equips .badge
+{
+    color: #4c0d5c;
+    background-color: #fff
+}
+
+
+th.hidemob.text-center,
+td.hidemob.text-center,
+td.hidemob.text-right
+    {
+    padding: 20px;
+    }
+  
+  @media screen and (max-width: 720px) {
+    th.hidemob.text-center,
+    td.hidemob.text-center,
+    td.hidemob.text-center
+    {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    element.style
+    {
+      width: 800px;
+    }
+  }
+

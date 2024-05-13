@@ -18,7 +18,9 @@ if(isset($_POST['submit'])){
 	$skill_effect = $_POST['skill_effect'];
 	
 
-  	$insert_data = "INSERT INTO skill_db(skill_name, skill_dmg, skill_est_cost, skill_lv, skill_def, skill_duration, skill_range, skill_act_type, skill_element, skill_class, skill_description, skill_effect) VALUES ('$skill_name','$skill_dmg','$skill_est_cost','$skill_lv','$skill_def','$skill_duration','$skill_range','$skill_act_type','$skill_element','$skill_class','$skill_description','$skill_effect')";
+  	$insert_data = "INSERT INTO 
+	skill_db(skill_name, skill_dmg, skill_est_cost, skill_lv, skill_def, skill_duration, skill_range, skill_act_type, skill_element, skill_class, skill_description, skill_effect)
+	VALUES ('$skill_name','$skill_dmg','$skill_est_cost','$skill_lv','$skill_def','$skill_duration','$skill_range','$skill_act_type','$skill_element','$skill_class','$skill_description','$skill_effect')";
   	$run_data = mysqli_query($con,$insert_data);
 
   	if($run_data){

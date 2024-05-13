@@ -1,3 +1,4 @@
+
 function UpdateINFO(personagemId) {
     
   var helm = document.querySelector(`[helmClassById="${personagemId}"]`).value;
@@ -273,6 +274,144 @@ function UpdateINFO2(personagemId) {
     document.querySelector(`[rhanddurById="${personagemId}"]`).value = 0;
   }
 
+  //Mao esquerda
+
+  var lefthand = document.querySelector(`[LHandById="${personagemId}"]`).value;
+
+  if (lefthand == 'Espada Longa de Ferro') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+2';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Espada de Cavaleiro') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+4';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Gleddyf') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '3d6+2';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '5';
+  } else if (lefthand == 'Falcione do Cacador') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '3d6+2';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Krigsverd') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '4d6+4';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Esboda') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '5d6';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Kord') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '5d6 (Sangramento 25%)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Lamina de Vicovaro') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '5d6+4 (Balanceada)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '15';
+  } else if (lefthand == 'Torrwr') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '6d6 (Sangramento 50%)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '15';
+  } else if (lefthand == 'Espada de Aco de Bruxo') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '4d6+2';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '15';
+  } else if (lefthand == 'Espada de Prata de Bruxo') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '1d6+2 (Prata 3d6)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Adaga') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '1d6';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '3';
+  } else if (lefthand == 'Estilete') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+2 (Porte Velado)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '3';
+  } else if (lefthand == 'Punhal') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+2 (Sangramento 25%)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '3';
+  } else if (lefthand == 'Jambiya') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6 (Sangramento 25%)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '3';
+  } else if (lefthand == 'Machado de Mao') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+1';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Machado de Batalha') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '5d6';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Machado Berserker') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '6d6 (Ablativa)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '15';
+  } else if (lefthand == 'Soqueira') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '1d6 (Adiciona a Soco)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '1';
+  } else if (lefthand == 'Maca') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '5d6';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '5';
+  } else if (lefthand == 'Martelo das Terras Altas') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '6d6+2 (Atordoamento)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Lanca') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '3d6 (Longo Alcance)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '5';
+  } else if (lefthand == 'Acha de Arma') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '4d6+2 (Longo Alcance)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Alabarda Vermelha') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '6d6+3 (Longo Alcance)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Cajado') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '1d6+2 (Foco 1)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '5';
+  } else if (lefthand == 'Cajado de Pastor') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6 (Foco 1)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '5';
+  } else if (lefthand == 'Cajado de Ferro') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '3d6 (Foco 2)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Cajado de Cristal') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+2 (Foco 3)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Arco Curto') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '3d6+3 (10m)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '2';
+  } else if (lefthand == 'Arco Longo') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '4d6 (20m)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '2';
+  } else if (lefthand == 'Arco de Guerra') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '6d6 (30m)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '3';
+  } else if (lefthand == 'Besta de Mao') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '2d6+2 (10m)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '2';
+  } else if (lefthand == 'Besta') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '4d6+2 (15m)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '2';
+  } else if (lefthand == 'Besta de Cacador de Monstros') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = '6d6 (20m)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '4';
+  } else if (lefthand == 'Escudo de Madeira') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 4';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '4';
+  } else if (lefthand == 'Broquel de Aco') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 6';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '6';
+  } else if (lefthand == 'Escudo Temeriano') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 8';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '8';
+  } else if (lefthand == 'Escudo de Saqueador Skellige') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 10';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '10';
+  } else if (lefthand == 'Escudo Kaedweni') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 14';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '14';
+  } else if (lefthand == 'Escudo Lagrima de Aco') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 16';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '16';
+  } else if (lefthand == 'Pavise') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 20 (Cobertura Completa)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '20';
+  } else if (lefthand == 'Pavise Nilfgardiano') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 25 (Cobertura Completa)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '25';
+  } else if (lefthand == 'Escudo Pipa Nilfgardiano') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 'DEF 30 (Cobertura Completa)';
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = '30';
+  } else if (lefthand == 'Nenhum') {
+    document.querySelector(`[lhanddmgById="${personagemId}"]`).value = 0;
+    document.querySelector(`[lhanddurById="${personagemId}"]`).value = 0;
+  }
+
   //var extra1 = document.getElementById("equippedExtra1").value;
 }
 
@@ -361,4 +500,24 @@ function updateModifiers(personagemId) {
   setSkills();
   enableArmor();
   updateAC();
+}
+
+function show(e) {
+  if (e.classList.contains("glyphicon-plus")) { //se tem olho aberto
+    e.classList.remove("glyphicon-plus"); //remove classe olho aberto
+    e.classList.add("glyphicon-minus"); //coloca classe olho fechado
+  } else {
+    e.classList.remove("glyphicon-minus"); //remove classe olho fechado
+    e.classList.add("glyphicon-plus"); //coloca classe olho aberto
+  }
+}
+
+function show2(e) {
+  if (e.classList.contains("glyphicon-plus")) { //se tem olho aberto
+    e.classList.remove("glyphicon-plus"); //remove classe olho aberto
+    e.classList.add("glyphicon-minus"); //coloca classe olho fechado
+  } else {
+    e.classList.remove("glyphicon-minus"); //remove classe olho fechado
+    e.classList.add("glyphicon-plus"); //coloca classe olho aberto
+  }
 }
